@@ -28,25 +28,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 @RunWith(Parameterized.class)
 public class LinkTest {
-    
+
     private WebDriver driver;
     private WebDriverWait wait;
     private static final Pattern COMMA = Pattern.compile(",");
-    
+
     @Parameter(0)
     public String url;
-    
+
     @Parameter(1)
     public String linkText;
-    
+
     @Parameter(2)
     public String expectedTitle;
-    
-    @Parameters(name="{index}: link[{1}] -> title[{2}]")
+
+    @Parameters(name = "{index}: link[{1}] -> title[{2}]")
     public static Collection<String[]> data() throws IOException {
         List<String> lines = FileUtils.readLines(new File("links.csv"));
         List<String[]> csvData = new LinkedList<String[]>();
-        for(String line : lines){
+        for (String line : lines) {
             csvData.add(COMMA.split(line));
         }
         return csvData;
